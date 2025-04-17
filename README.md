@@ -61,8 +61,8 @@ cp .env.example .env
 docker-compose up --build
 ```
 
-- **OpenAPI docs:** [docs]  
-- **Web app:** [webapp]  
+- **OpenAPI docs:** [docs-placeholder]  
+- **Web app:** [webapp-placeholder]  
 
 ---
 
