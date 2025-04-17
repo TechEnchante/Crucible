@@ -1,22 +1,38 @@
-🔥 Crucible — Git for Life
+# 🔥 Crucible — Git for Life
+
+<!-- Side‑project status -->
+![Project Status](https://img.shields.io/badge/project-side%20project-lightgrey.svg)
+<!-- Stability / maturity -->
+![Stability](https://img.shields.io/badge/stability-alpha-orange.svg)
+<!-- AI‑powered -->
+![AI Powered](https://img.shields.io/badge/AI‑Powered-blue.svg)
+<!-- GitHub stars (social style) -->
+![GitHub stars](https://img.shields.io/github/stars/TechEnchante/crucible?style=social)
+<!-- Contributors -->
+![Contributors](https://img.shields.io/github/contributors/TechEnchante/crucible)
+<!-- Last commit -->
+![Last commit](https://img.shields.io/github/last-commit/TechEnchante/crucible)
+<!-- PRs welcome -->
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+<!-- Made with ❤️ -->
+![Made with ❤️](https://img.shields.io/badge/made%20with-%E2%9D%A4-red.svg)
 
 > “After being impacted by a RIF, I found myself disoriented—no roadmap, no daily standups, no sprint goals. Just silence.”
 
-**Crucible** was born in that silence.
+**Crucible** was born in that silence.  
+It’s not just an app. It’s a way to rebuild your sense of momentum—one commit, one quest at a time.
 
-It’s not just an app. It’s a way to rebuild your sense of momentum — one commit, one quest at a time.
-
-Crucible fuses **Git-style structure** with **RuneScape-style quests**.  
-Track your life with commits. Generate real-world quests with AI. Store your progress semantically.
+Crucible fuses **Git‑style structure** with **RuneScape‑style quests**.  
+Track your life with commits. Generate real‑world quests with AI. Store your progress semantically.
 
 ---
 
 ## ❓ What is Crucible?
 
-- ✅ Git‑like commits for real-world tasks and achievements  
-- 🧠 AI‑powered quests shaped by your history and environment  
-- 📦 Qdrant vector storage for semantic memory & retrieval  
-- 🔮 Optional runes and world events to guide focus and intent  
+- ✅ **Git‑like commits** for real‑world tasks and achievements  
+- 🧠 **AI‑powered quests** shaped by your history and environment  
+- 📦 **Qdrant vector storage** for semantic memory & retrieval  
+- 🔮 **Optional runes** and world events to guide focus and intent  
 
 Turn confusion into clarity.  
 Burnout into XP.  
@@ -29,42 +45,43 @@ Every day into a step toward purpose.
 
 ## ⚙️ Tech Stack
 
-- **Backend**: Python 3.13+, FastAPI, OpenAI Async SDK  
-- **Vector DB**: Qdrant  
-- **Frontend**: React 18, Tailwind CSS, shadcn/ui, Framer Motion  
-- **AI**: OpenAI Embeddings + Chat completions  
-- **Containers**: Docker + Docker Compose
+| Layer      | Technology                                |
+| ---------- | ----------------------------------------- |
+| **Backend**    | Python 3.13+, FastAPI, OpenAI Async SDK |
+| **Vector DB**  | Qdrant                                  |
+| **Frontend**   | React 18, Tailwind CSS, shadcn/ui, Framer Motion |
+| **AI**         | OpenAI Embeddings + Chat completions    |
+| **Containers** | Docker + Docker Compose                 |
 
 ---
 
 ## 🏎️ Quick Start
 
 ```bash
-git clone https://github.com/TechEnchante/crucible.git
+git clone [repo]
 cd crucible
 cp .env.example .env
-```
-
-```bash
 docker-compose up --build
 ```
 
-- OpenAPI docs: http://localhost:8000/docs  
-- Web app: http://localhost:3000
+- **OpenAPI docs:** [docs]  
+- **Web app:** [webapp]  
 
 ---
 
-## 📐 Architecture
+<details>
+<summary>📐 Architecture</summary>
 
-```
-[React UI] <---> [FastAPI API] <---> [Qdrant DB]
-                               |
-                          [OpenAI API]
+```text
+[React UI] ←→ [FastAPI API] ←→ [Qdrant DB]
+                              |
+                         [OpenAI API]
 ```
 
-- Commits = vectors + metadata  
-- Quests = templates + similarity search  
-- Quest engine = embedding lookup → LLM prompt → custom quest
+- **Commits** = vectors + metadata  
+- **Quests** = templates + similarity search  
+- **Quest engine** = embedding lookup → LLM prompt → custom quest  
+</details>
 
 ---
 
@@ -80,62 +97,54 @@ APP_NAME=Crucible
 
 ## 🐝 Testing
 
-**Backend**
-```bash
-cd backend
-pytest
-```
-
-**Frontend**
-```bash
-cd frontend
-npm test
-```
+| Suite     | Command                     |
+| --------- | --------------------------- |
+| **Backend**  | `cd backend && pytest`      |
+| **Frontend** | `cd frontend && npm test`   |
 
 ---
 
 ## 🧠 AI Quest Engine Flow
 
-1. Embed last N commits with `all-mpnet-base-v2`
-2. Search Qdrant for related quest/event templates
-3. Prompt LLM:
-    ```
-    Given these commits: ...
-    And these signals: ["Rainy weather", "Hackathon today"]
-    Draft a quest that fits context and goals.
-    ```
+1. Embed last N commits with `all-mpnet-base-v2`  
+2. Search Qdrant for related quest/event templates  
+3. Prompt LLM:  
+   ```text
+   Given these commits: ...
+   And these signals: ["Rainy weather", "Hackathon today"]
+   Draft a quest that fits context and goals.
+   ```  
 4. Output:
-
-```json
-{
-  "quest_id": "xyz",
-  "title": "Forge Your First Public Release",
-  "description": "You've logged 5 'bugfix' commits—now package version 1.0 and share it!",
-  "xp_reward": 100
-}
-```
+   ```json
+   {
+     "quest_id": "xyz",
+     "title": "Forge Your First Public Release",
+     "description": "You've logged 5 'bugfix' commits—now package version 1.0 and share it!",
+     "xp_reward": 100
+   }
+   ```
 
 ---
 
-## 🗺️ 4-Week Roadmap
+## 🗺️ 4‑Week Roadmap
 
-| Week | Focus |
-|------|-------|
-| 1 | Core engine, Docker setup, health & commit endpoints |
-| 2 | Commit storage, quest templates, `/quests/assign` AI |
-| 3 | Event connectors (weather, news, calendar), guilds, plugin hooks |
-| 4 | UI polish, seasonal arcs, E2E tests, production deploy |
+| Week | Focus                                                            |
+| ---- | ---------------------------------------------------------------- |
+| 1    | Core engine, Docker setup, health & commit endpoints             |
+| 2    | Commit storage, quest templates, `/quests/assign` AI integration |
+| 3    | Event connectors (weather, news, calendar), guilds, plugin hooks |
+| 4    | UI polish, seasonal arcs, E2E tests, production deploy           |
 
 ---
 
 ## 🤝 Contributing
 
-- Issues and PRs welcome!
-- See `ROADMAP.md` for task tracking and sprint progress.
+- [ ] Submit issues and pull requests  
+- [ ] Review [ROADMAP.md]  
+- [ ] Read our [CODE_OF_CONDUCT.md]  
 
 ---
 
-## 🎮 Ready to forge your journey?
+## 🎮 Ready to Forge Your Journey?
 
-You’re all set to turn your life into an epic quest.  
-Welcome to **Crucible**.
+Turn your life into an epic quest with **Crucible**.
