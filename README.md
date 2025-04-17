@@ -13,10 +13,10 @@
 
 ![Crucible Logo](images/Crucible_Logo_Beta.jpeg "Forge Your Journey")
 
-> “After being impacted by a RIF, I found myself disoriented... no roadmap, no daily meetings, no yearly goals. Just silence.”
+> “After being impacted by a RIF, I found myself briefly disoriented... no roadmap, no daily meetings, no yearly goals. Just silence.”
 
 **Crucible** was born in that silence.  
-It’s not just an app. It’s a way to rebuild your sense of momentum.
+It’s not just an app. It’s a way to rebuild your sense of momentum and personal purpose.
 One commit and one quest at a time.
 
 Crucible fuses **Git‑style structure** with **RuneScape‑style quests**.  
