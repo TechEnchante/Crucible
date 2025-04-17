@@ -1,29 +1,26 @@
 # 🔥 Crucible — Git for Life
-
-<!-- Side‑project status -->
-![Project Status](https://img.shields.io/badge/project-side%20project-lightgrey.svg)
+<!-- Side‑project status --> 
 <!-- Stability / maturity -->
-![Stability](https://img.shields.io/badge/stability-alpha-orange.svg)
 <!-- AI‑powered -->
-![AI Powered](https://img.shields.io/badge/AI‑Powered-blue.svg)
 <!-- GitHub stars (social style) -->
-![GitHub stars](https://img.shields.io/github/stars/TechEnchante/crucible?style=social)
+![Project Status](https://img.shields.io/badge/project-side%20project-lightgrey.svg) ![Stability](https://img.shields.io/badge/stability-alpha-orange.svg) ![AI Powered](https://img.shields.io/badge/AI‑Powered-blue.svg) ![GitHub stars](https://img.shields.io/github/stars/TechEnchante/crucible?style=social)
 <!-- Contributors -->
-![Contributors](https://img.shields.io/github/contributors/TechEnchante/crucible)
 <!-- Last commit -->
-![Last commit](https://img.shields.io/github/last-commit/TechEnchante/crucible)
 <!-- PRs welcome -->
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 <!-- Made with ❤️ -->
-![Made with ❤️](https://img.shields.io/badge/made%20with-%E2%9D%A4-red.svg)
 
-> “After being impacted by a RIF, I found myself disoriented—no roadmap, no daily standups, no sprint goals. Just silence.”
+![Contributors](https://img.shields.io/github/contributors/TechEnchante/crucible) ![Last commit](https://img.shields.io/github/last-commit/TechEnchante/crucible) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg) ![Made with ❤️](https://img.shields.io/badge/made%20with-%E2%9D%A4-red.svg)
+
+![Crucible Logo](images/Crucible_Logo_Beta.jpeg "Forge Your Journey")
+
+> “After being impacted by a RIF, I found myself disoriented... no roadmap, no daily meetings, no yearly goals. Just silence.”
 
 **Crucible** was born in that silence.  
-It’s not just an app. It’s a way to rebuild your sense of momentum—one commit, one quest at a time.
+It’s not just an app. It’s a way to rebuild your sense of momentum.
+One commit and one quest at a time.
 
 Crucible fuses **Git‑style structure** with **RuneScape‑style quests**.  
-Track your life with commits. Generate real‑world quests with AI. Store your progress semantically.
+Track your life with commits. Generate real‑world quests with AI. Store your progress to review later.
 
 ---
 
@@ -141,7 +138,6 @@ APP_NAME=Crucible
 
 - [ ] Submit issues and pull requests  
 - [ ] Review [ROADMAP.md]  
-- [ ] Read our [CODE_OF_CONDUCT.md]  
 
 ---
 
