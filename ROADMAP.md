@@ -1,6 +1,6 @@
 🛠️ CRUCIBLE — FULL FEATURE ROADMAP
 
-> 🔁 Sprint cadence: **1 week**  
+> 🔁 Sprint cadence: **1 week** starting April 29th
 > 📦 Deliverable per sprint: deployable container with version tag  
 > 🧠 Core AI features evolve across sprints
 > 🐋 All services containerised with Docker  
