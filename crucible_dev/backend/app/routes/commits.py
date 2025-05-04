@@ -1,30 +1,34 @@
+import uuid
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+from app.schemas import CommitCreate, Commit  # see below
 from app.services.qdrant_client import QdrantService
 from app.utils.embeddings import embed_text
 
 router = APIRouter()
-
-class CommitCreate(BaseModel):
-    user_id: str
-    message: str
-    timestamp: float
-
 qdrant = QdrantService()
 
-@router.post("/new")
+
+@router.post(
+    "/new",
+    response_model=Commit,
+    status_code=201,
+    summary="Create a new commit vector"
+)
 async def create_commit(commit: CommitCreate):
+    #Embed the incoming message
     vector = embed_text(commit.message)
-    success = qdrant.store_vector(
-        collection_name="commits",
-        point_id=f"{commit.user_id}-{commit.timestamp}",
-        vector=vector,
-        payload={
-            "user_id": commit.user_id,
-            "message": commit.message,
-            "timestamp": commit.timestamp
-        }
-    )
-    if not success:
-        raise HTTPException(status_code=500, detail="Failed to store commit")
-    return {"status": "ok"}
+
+    #Prepare your metadata payload
+    payload = commit.dict()
+
+    #Generate a UUID for this point
+    point_id = str(uuid.uuid4())
+
+    #Store with explicit point_id, vector & payload
+    try:
+        qdrant.store_vector("commits", point_id, vector, payload)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+    #Return everything back to the client
+    return Commit(**payload, point_id=point_id, status="ok")
