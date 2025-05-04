@@ -1,30 +1,46 @@
-from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+from datetime import date
+from pydantic import BaseModel, Field
+from fastapi import APIRouter, Depends, HTTPException
 from app.services.qdrant_client import QdrantService
-from app.utils.embeddings import embed_text
+from app.utils.embedder import embed_text
 
-router = APIRouter()
+router = APIRouter(prefix="/commits", tags=["commits"])
 
-class CommitCreate(BaseModel):
-    user_id: str
-    message: str
-    timestamp: float
+class CommitIn(BaseModel):
+    current_date: date = Field(..., description="Record creation date")
+    goal_category: str = Field(..., description="High-level category for this goal")
+    goal_message: str = Field(..., description="Short description of the goal")
+    definition_of_done: str = Field(..., description="How we know it's done")
+    due_date: date = Field(..., description="When the goal should be completed")
+    username: str = Field(..., description="User submitting this goal")
 
-qdrant = QdrantService()
+class CommitOut(BaseModel):
+    uuid: str
 
-@router.post("/new")
-async def create_commit(commit: CommitCreate):
-    vector = embed_text(commit.message)
-    success = qdrant.store_vector(
-        collection_name="commits",
-        point_id=f"{commit.user_id}-{commit.timestamp}",
-        vector=vector,
-        payload={
-            "user_id": commit.user_id,
-            "message": commit.message,
-            "timestamp": commit.timestamp
-        }
-    )
-    if not success:
-        raise HTTPException(status_code=500, detail="Failed to store commit")
-    return {"status": "ok"}
+def get_qdrant_service() -> QdrantService:
+    return QdrantService()
+
+@router.post("/", response_model=CommitOut, status_code=201)
+async def create_commit(
+    commit: CommitIn,
+    qdrant: QdrantService = Depends(get_qdrant_service),
+):
+    text = " | ".join([
+        commit.goal_category,
+        commit.goal_message,
+        commit.definition_of_done,
+    ])
+
+    try:
+        vector = embed_text(text)
+    except Exception as e:
+        raise HTTPException(status_code=501, detail=f"Embedding error: {e}")
+
+    payload = commit.dict()
+
+    try:
+        point_id = qdrant.store_vector("commits", vector, payload)
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"Qdrant error: {e}")
+
+    return CommitOut(uuid=point_id)
