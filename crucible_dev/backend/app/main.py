@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routes.commits import router as commits_router
+from app.routes.commits import router as commits_router
 
 app = FastAPI(
     title="Crucible API",

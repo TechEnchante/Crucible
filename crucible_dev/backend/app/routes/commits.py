@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from services.qdrant_client import QdrantService
-from utils.embeddings import embed_text
+from app.services.qdrant_client import QdrantService
+from app.utils.embeddings import embed_text
 
 router = APIRouter()
 
