@@ -7,3 +7,7 @@ app = FastAPI(
 )
 
 app.include_router(commits_router, prefix="/commits", tags=["commits"])
+
+@app.get("/")
+async def health():
+    return {"status": "alive"}
