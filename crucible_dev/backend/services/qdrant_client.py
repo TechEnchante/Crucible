@@ -6,30 +6,37 @@ import uuid
 class QdrantService:
     def __init__(self):
         self.client = QdrantClient(
-            url=os.getenv("QDRANT_URL", "http://qdrant:6333"),
+            url=os.getenv("QDRANT_URL", "http://localhost:6333"),
             api_key=os.getenv("QDRANT_API_KEY", None)
         )
-        self._ensure_collection()
+        self.client.recreate_collection(
+            collection_name="commits",
+            vectors_config={
+                "vector": VectorParams(size=768, distance=Distance.COSINE)
+            }
+        )
 
-    def _ensure_collection(self):
+    def store_vector(self, collection_name: str, vector: list, payload: dict) -> str:
+        #ensure the collection exists
         existing = [c.name for c in self.client.get_collections().collections]
-        if "commits" not in existing:
+        if collection_name not in existing:
             self.client.create_collection(
-                collection_name="commits",
+                collection_name=collection_name,
                 vectors_config={
-                    "embedding": VectorParams(size=768, distance=Distance.COSINE)
+                    "embedding": rest.VectorParams(
+                        size=768,
+                        distance=rest.Distance.COSINE
+                    )
                 }
             )
 
-    def store_vector(self, collection_name: str, vector: list, payload: dict) -> str:
-        # Generate a UUID v4 for each point
         point_id = str(uuid.uuid4())
         self.client.upsert(
             collection_name=collection_name,
             points=[{
-                "id": point_id,
-                "vectors": {"embedding": vector},
-                "payload": payload
+                "id":       point_id,
+                "vectors":  {"embedding": vector},
+                "payload":  payload
             }]
         )
         return point_id

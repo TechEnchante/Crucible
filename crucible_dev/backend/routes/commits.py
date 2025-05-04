@@ -23,10 +23,6 @@ class QdrantService:
             )
 
     def store_vector(self, collection_name: str, vector: list, payload: dict) -> str:
-        """
-        Upsert the given vector+payload under a newly generated UUID.
-        Returns the point_id (UUID) used.
-        """
         point_id = str(uuid.uuid4())
         self.client.upsert(
             collection_name=collection_name,
